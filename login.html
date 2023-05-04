@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="form.css">
+
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+
+
+
+    <fieldset class="H4" style="width: 40%; height:40%">
+        <h2>Login Form</h2>
+        <div style="width:max-content">
+            <form style="align-content: center;">
+                <label class="b">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username " style=" border-color: cyan; text-align: left;">
+
+
+                <label class="b">Password</label>
+                <input type="input" id="password" name="password" placeholder="Enter your password" class="n" style="border-color: cyan;"><br>
+
+                <input type="button " value="Login " id="login" class="btn" style=" width: 28%; height: 25px; text-align: center; ">
+            </form>
+        </div>
+        <a href="index.html ">Back to HomePage</a>
+    </fieldset>
+
+    <div id="info"></div>
+
+    <a href="index.html">back</a>
+</body>
+
+<script>
+    let contactinf = document.querySelector('#login');
+    let al = document.querySelector('.box-form')
+    contactinf.addEventListener('click', function(event) {
+        event.preventDefault();
+        let nam = document.querySelector('#username').value;
+        let pass = document.querySelector('#password').value;
+
+
+        if (nam === "admin" && pass === "admin") {
+            let details = JSON.parse(localStorage.getItem("details")) || [];
+            let contactinfo = "";
+            for (let a = 0; a < details.length; a++) {
+                contactinfo += "<h1>" + (a + 1) + "</h1>";
+                contactinfo += "<p><strong>NAME:</strong>" + details[a].name + "</p>";
+                contactinfo += "<p><strong>EMAIL:</strong>" + details[a].address + "</p>";
+                contactinfo += "<p><strong>MESSAGE:</strong>" + details[a].email + "</p>";
+                contactinfo += "<p><strong>MESSAGE:</strong>" + details[a].comments + "</p>";
+            };
+
+            document.getElementById("info").innerHTML = contactinfo;
+        } else {
+            alert("invalid username or password");
+        };
+
+        //  box-form.reset();
+
+    });
+</script>
+
+</html>
